@@ -107,7 +107,7 @@ def f05_create_df_from_read_html():
 
     # Grouping and aggregating data
     # grouped_df = df.groupby('Department').agg({'Salary': 'mean', 'Age': 'max'})
-    grouped_df = df.groupby('GICS Sector').agg({'GICS Sector': 'count'}))
+    grouped_df = df.groupby('GICS Sector').agg({'GICS Sector': 'count'})
     print(grouped_df)
 
     return df
@@ -259,11 +259,26 @@ def medart_iterator():
     df['AgeGroup'] = np.where(df['Age'] < 30, 'Young', 'Mature')
     print(df[['Name', 'Age', 'AgeGroup']])
 
+def tips():
+    # Query
+    data = {
+        'Name' : ['Larry', 'Mac', 'Manuel', 'Efren'],
+        'Age' : [67, 68, 69, 67],
+        'Salary' : [10000,200000,50100,40000]
+
+    }
+    df = pd.DataFrame(data)
+    print(df)
+    print(df.info())
+    print(df.query(df.Age > 30) & (df.Salary > 50000))
+    print(df)
 
 
 def main():
     
-    employee_df = f01_create_df_from_dict()
+    #employee_df = f01_create_df_from_dict()
+    ex = tips()
+    print(ex)
     #print(employee_df)
     #planets_df = f02_create_df_from_list()
   
